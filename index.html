@@ -15,7 +15,7 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var x = canvas.width/4;
 var y = canvas.height-10;
-var dx = 0;
+var dx = 1;
 var dy = -2;
 var ballRadius = 10;
 
@@ -30,14 +30,12 @@ function drawBall() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBall();
-  if(y + dy < 0) {
+  if(y + dy > canvas.height || y + dy < 0) {
     dy = -dy;
   }
-
-  if(y + dy > canvas.height) {
-    dy = -dy;
+  if(x + dx > canvas.width || x + dx < 0) {
+    dx = -dx;
   }
-
   x += dx;
   y += dy;
 }
